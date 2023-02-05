@@ -1,41 +1,19 @@
 #include <Arduino.h>
-void setup() {
-    Serial.begin(115200);
-}
-
-void loop() {
-    Serial.println("Test 1 2");
-    delay(1000);
-}
-
-// switch example
-#include <Arduino.h>
+#include <Bounce2.h>
 #define BUTTON 27
 int cnt = 0;
+Bounce debouncer = Bounce();
 void setup() {
     Serial.begin(115200);
-    Serial.println("");
-    pinMode(BUTTON, INPUT_PULLUP);
+    Serial.println("BUTTON");
+    debouncer.attach(BUTTON, INPUT_PULLUP);
+    debouncer.interval(25); 
 }
 
 void loop() {
-    if (!digitalRead(BUTTON)){
+    debouncer.update();
+    if ( debouncer.fell() ) { 
         cnt++;
         Serial.println(cnt);
     }
-}
-
-// 5 sec example
-#include <Arduino.h>
-#define GREEN 33
-void setup() {
-    pinMode(GREEN, OUTPUT);
-    digitalWrite(GREEN,0);
-}
-
-void loop() {
-    digitalWrite(GREEN,1);
-    delay(500);
-    digitalWrite(GREEN,0);
-    delay(500);
 }
