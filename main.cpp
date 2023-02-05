@@ -4,11 +4,11 @@ void setup() {
 }
 
 void loop() {
-    Serial.println("Hello World");
+    Serial.println("Test 1 2");
     delay(1000);
 }
 
-// switch
+// switch example
 #include <Arduino.h>
 #define BUTTON 27
 int cnt = 0;
@@ -25,7 +25,7 @@ void loop() {
     }
 }
 
-// 5 sec
+// 5 sec example
 #include <Arduino.h>
 #define GREEN 33
 void setup() {
